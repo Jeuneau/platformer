@@ -16,7 +16,7 @@ namespace platformer
         float speed;
         bool canJump;
 
-        //dddd
+        
 
     }
 
