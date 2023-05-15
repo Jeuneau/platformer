@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "wZGrfRiPM+71k86epKDdwO4wavUSOEo8k8UTyUPMN3uXnJVrpj7aGaimvlXDapwH9P4x7TjT8wMP7ie+k3SVXA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\jeune\\OneDrive\\Documents\\Schooljaar2022_2023\\Periode_4\\platformer\\platformer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jeune\\.nuget\\packages\\raylib-cs\\4.5.0\\raylib-cs.4.5.0.nupkg.sha512",
+    "C:\\Users\\jeune\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}
