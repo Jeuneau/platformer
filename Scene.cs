@@ -1,6 +1,7 @@
 using Raylib_cs;
 using System; // Math
-using System.Numerics; 
+using System.Numerics;
+using System.Collections.Generic; 
 
 
 
@@ -8,36 +9,53 @@ using System.Numerics;
 namespace platformer
 {
     class Scene {
-         const int screenwwidth = 800;
-         const int screenheight = 450;
-         Player player = new Player();
+       
         
-         
-         
+        float deltaTime;
 
-         public void Main() {
-            
-            player.position= new Vector2(400,280);
-            player.speed= 0;
-            player.canJump= false;
+        Player player = new Player();
 
-             Platform[] platforms = {
-            new Platform { Rect = new Rectangle(0, 0, 1000, 400), Type = 0, Color = Color.LIGHTGRAY },
-            new Platform { Rect = new Rectangle(0, 400, 1000, 200), Type = 1, Color = Color.GRAY },
-            new Platform { Rect = new Rectangle(300, 200, 400, 10), Type = 1, Color = Color.GRAY },
-            new Platform { Rect = new Rectangle(250, 300, 100, 10), Type = 1, Color = Color.GRAY },
-            new Platform { Rect = new Rectangle(650, 300, 100, 10), Type = 1, Color = Color.GRAY }
-            
-             };
+        public void Update() {
 
-            
-           
+            deltaTime= Raylib.GetFrameTime();
 
+
+            HandleInput(deltaTime);
+
+
+            Raylib.BeginDrawing();
+            Raylib.ClearBackground(Color.GRAY);
+
+            player.Draw();
+
+            Raylib.EndDrawing();
         }
-       
-       
 
-      
+        public void HandleInput(float deltaTime)
+        {
+            if (Raylib.IsKeyDown(KeyboardKey.KEY_LEFT))
+			{
+                player.MoveLeft(deltaTime);
+			}
+
+            if (Raylib.IsKeyDown(KeyboardKey.KEY_RIGHT))
+			{ 
+                player.MoveRight(deltaTime);
+			}
+
+            if (Raylib.IsKeyPressed(KeyboardKey.KEY_SPACE))
+			{
+                player.Jump(deltaTime);
+			}
+        }
+                   
     }
-
+     
 }
+
+
+
+
+
+
+        

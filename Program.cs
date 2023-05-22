@@ -1,4 +1,5 @@
-﻿using Raylib_cs;
+﻿using System;
+using Raylib_cs;
 
 namespace platformer
 {
@@ -6,19 +7,17 @@ namespace platformer
     {
         public static void Main()
         {
-            Raylib.InitWindow(800, 480, "Platformer");
+            Raylib.InitWindow(1707, 1067, "Platformer");
+
+            Scene scene = new Scene();
 
             while (!Raylib.WindowShouldClose())
             {
-                Raylib.BeginDrawing();
-                Raylib.ClearBackground(Color.GRAY);
-
-                //Raylib.DrawText("Hello, world!", 12, 12, 20, Color.BLACK);
-
-                Raylib.EndDrawing();
+                scene.Update();
             }
 
             Raylib.CloseWindow();
         }
+       
     }
 }
