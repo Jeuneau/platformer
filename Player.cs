@@ -16,9 +16,16 @@ namespace platformer
         Texture2D texture;
         float deltaTime;
 
+        bool jump;
+        int jumptimer;
+        bool onfloor;
+        bool collision;
+
+        
+
         public Player()
         {
-            position = new Vector2(400,280);
+            position = new Vector2(175,340);
             speed = 0;
             Image stickman = Raylib.LoadImage("Assets/platformer_stickman_player.png");  // Load image data into CPU memory (RAM)
             texture = Raylib.LoadTextureFromImage(stickman);       // Image converted to texture, GPU memory (RAM -> VRAM)

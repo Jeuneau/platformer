@@ -9,12 +9,23 @@ namespace platformer
 {
 
     class Platform {
-        Rectangle rect;
-        int blocking;
-        Color color;
+        
+        public Vector2 position;
+        public float speed;
+        Texture2D texture;
+         public Platform()
+        {
+            //position = new Vector2(100,400);
+            speed = 0;
+            Image platform = Raylib.LoadImage("Assets/platform.png");  // Load image data into CPU memory (RAM)
+            texture = Raylib.LoadTextureFromImage(platform);       // Image converted to texture, GPU memory (RAM -> VRAM)
+            Raylib.UnloadImage(platform); 
+        }
 
-        public Rectangle Rect { get; internal set; }
-        public int Type { get; internal set; }
-        public object Color { get; internal set; }
+        public void Draw()
+        {
+            Raylib.DrawTexture(texture, (int)position.X, (int)position.Y, Color.WHITE);
+        }
+       
     }
 }
