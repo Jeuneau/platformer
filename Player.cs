@@ -20,7 +20,10 @@ namespace platformer
         int jumptimer;
         bool onfloor;
         bool collision;
-
+        
+        int playerwidth= 56;
+        int playerheight= 64;
+        Rectangle foot;
         
 
         public Player()
@@ -29,7 +32,9 @@ namespace platformer
             speed = 0;
             Image stickman = Raylib.LoadImage("Assets/platformer_stickman_player.png");  // Load image data into CPU memory (RAM)
             texture = Raylib.LoadTextureFromImage(stickman);       // Image converted to texture, GPU memory (RAM -> VRAM)
-            Raylib.UnloadImage(stickman); 
+            Raylib.UnloadImage(stickman);
+             
+            
         }
          
         public void Update() {

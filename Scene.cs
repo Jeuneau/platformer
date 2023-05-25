@@ -26,7 +26,8 @@ namespace platformer
 		private Platform platform6;
         private Platform platform7;
         private Platform platform8;
-         private Platform platform9;
+        private Platform platform9;
+        
         
 
         public Scene() {
@@ -85,6 +86,7 @@ namespace platformer
 			 platforms[i].Draw();
 			}
            
+            Raylib.DrawRectangle(175,385,64, 15, Color.RED);
 
             Raylib.EndDrawing();
         }
