@@ -26,8 +26,8 @@ namespace platformer
 		private Platform platform6;
         private Platform platform7;
         private Platform platform8;
-        private int i;
-
+         private Platform platform9;
+        
 
         public Scene() {
         
@@ -41,6 +41,7 @@ namespace platformer
 		platform6= new Platform();
 		platform7= new Platform();
 		platform8= new Platform();
+        platform9= new Platform();
 
         platforms.Add(platform);
 		platforms.Add(platform2);
@@ -50,15 +51,17 @@ namespace platformer
 		platforms.Add(platform6);
 		platforms.Add(platform7);
 		platforms.Add(platform8);
+        platforms.Add(platform9);
 
         platform.position = new Vector2(100,400);
-		platform2.position= new Vector2(100,400);
-		platform3.position= new Vector2(100,400);
-		platform4.position = new Vector2(100,400);
-		platform5.position = new Vector2(100,400);
-		platform6.position = new Vector2(100,400);
-		platform7.position= new Vector2(100,400);
-		platform8.position= new Vector2(100,400);
+		platform2.position= new Vector2(50,100);
+		platform3.position= new Vector2(500,120);
+		platform4.position = new Vector2(950,90);
+		platform5.position = new Vector2(1300,160);
+		platform6.position = new Vector2(550,600);
+		platform7.position= new Vector2(1000,800);
+		platform8.position= new Vector2(450,900);
+        platform9.position= new Vector2(900,400);
 			
 
 
@@ -77,7 +80,11 @@ namespace platformer
             Raylib.ClearBackground(Color.GRAY);
 
             player.Draw();
-            platforms[i].Draw();
+
+            for (var i = 0; i < platforms.Count; i++) {
+			 platforms[i].Draw();
+			}
+           
 
             Raylib.EndDrawing();
         }
