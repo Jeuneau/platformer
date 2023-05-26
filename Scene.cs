@@ -71,6 +71,7 @@ namespace platformer
         }
         public void Update() {
 
+
             deltaTime= Raylib.GetFrameTime();
 
 
@@ -89,6 +90,17 @@ namespace platformer
             Raylib.DrawRectangle(175,385,64, 15, Color.RED);
 
             Raylib.EndDrawing();
+
+            /*for (int i = 0; i < platforms.Count; i++) {
+					
+					if (player.position) 
+					{
+                        
+						platforms.RemoveAt(i);
+						
+						
+							
+					}*/
         }
 
         public void HandleInput(float deltaTime)
