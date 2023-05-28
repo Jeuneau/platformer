@@ -23,11 +23,11 @@ namespace platformer
         
         int playerwidth= 56;
         int playerheight= 64;
-        Rectangle foot;
         
 
         public Player()
         {
+            
             position = new Vector2(175,340);
             speed = 0;
             Image stickman = Raylib.LoadImage("Assets/platformer_stickman_player.png");  // Load image data into CPU memory (RAM)

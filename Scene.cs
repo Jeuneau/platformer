@@ -14,6 +14,7 @@ namespace platformer
         float deltaTime;
 
         Player player = new Player();
+        Foot foot = new Foot();
 
         List<Platform> platforms;
         private Platform platform;
@@ -27,9 +28,10 @@ namespace platformer
         private Platform platform7;
         private Platform platform8;
         private Platform platform9;
-        
-        
+        //bool platformCollision = Raylib.CheckCollisionRecs(foot, platform);        
 
+
+       
         public Scene() {
         
         Platform platform= new Platform();
@@ -64,8 +66,8 @@ namespace platformer
 		platform8.position= new Vector2(450,900);
         platform9.position= new Vector2(900,400);
 			
-
-
+        
+        
 			
         
         }
@@ -83,24 +85,27 @@ namespace platformer
 
             player.Draw();
 
+            foot.Draw();
+
             for (var i = 0; i < platforms.Count; i++) {
 			 platforms[i].Draw();
 			}
            
-            Raylib.DrawRectangle(175,385,64, 15, Color.RED);
+           
 
             Raylib.EndDrawing();
 
-            /*for (int i = 0; i < platforms.Count; i++) {
+            for (int i = 0; i < platforms.Count; i++) {
 					
-					if (player.position) 
+					if ((CalculateDistance(player.position, platforms[i].position) <10))
 					{
                         
-						platforms.RemoveAt(i);
+						
 						
 						
 							
-					}*/
+					}
+            }
         }
 
         public void HandleInput(float deltaTime)
@@ -119,6 +124,11 @@ namespace platformer
 			{
                 player.Jump(deltaTime);
 			}
+        }
+
+        	private float CalculateDistance(Vector2 a, Vector2 b)
+        {
+            return Vector2.Distance(a, b);
         }
                    
     }
