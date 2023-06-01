@@ -6,18 +6,22 @@ namespace platformer
 {
 
     public class Foot {
-        Rectangle foot;
+        /*public int footX = 175;
+        public int footY = 385;*/
+        public Vector2 position;
+        public int foot_width = 64;
+        public int foot_height= 15;
         
 
             public Foot() {
-                
+            position= new Vector2(175,385);    
                 
                 
         }
 
           public void Draw()
         {
-            Raylib.DrawRectangle(175,385,64, 15, Color.RED);
+            Raylib.DrawRectangle((int) position.X, (int) position.Y,foot_width, foot_height, Color.RED);
         }
     
     }   

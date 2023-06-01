@@ -17,21 +17,20 @@ namespace platformer
         Foot foot = new Foot();
 
         List<Platform> platforms;
-        private Platform platform;
-        private Platform platform2;
-        private Platform platform3;
+        public Platform platform;
+        public Platform platform2;
+        public Platform platform3;
 
-		private Platform platform4;
-		private Platform platform5;
+		public Platform platform4;
+		public Platform platform5;
 
-		private Platform platform6;
-        private Platform platform7;
-        private Platform platform8;
-        private Platform platform9;
-        //bool platformCollision = Raylib.CheckCollisionRecs(foot, platform);        
+		public Platform platform6;
+        public Platform platform7;
+        public Platform platform8;
+        public Platform platform9;
 
+        public static bool collision { get; internal set; }
 
-       
         public Scene() {
         
         Platform platform= new Platform();
@@ -65,8 +64,12 @@ namespace platformer
 		platform7.position= new Vector2(1000,800);
 		platform8.position= new Vector2(450,900);
         platform9.position= new Vector2(900,400);
-			
-        
+
+        foot = new Foot();
+
+       
+
+
         
 			
         
@@ -87,25 +90,46 @@ namespace platformer
 
             foot.Draw();
 
-            for (var i = 0; i < platforms.Count; i++) {
+            for (int i = 0; i < platforms.Count; i++) {
 			 platforms[i].Draw();
 			}
-           
-           
 
+
+
+            // Check collision between the two objects
+
+
+            for (int i = 0; i < platforms.Count; i++)
+            {
+                Raylib_cs.Rectangle platform_Rect = new Raylib_cs.Rectangle(platforms[i].position.X, platforms[i].position.Y, platforms[i].platform_width, platforms[i].platform_height);
+                Raylib_cs.Rectangle foot_Rect = new Raylib_cs.Rectangle(foot.position.X, foot.position.Y, foot.foot_width, foot.foot_height);
+               
+                // Use the collision result
+                
+                bool collision = Raylib.CheckCollisionRecs(foot_Rect, platform_Rect);
+
+                
+                /*if (CalculateDistance(foot.position, platforms[i].position)< 1)
+                {
+                    // Collision occurred
+                    // Perform actions accordingly
+                    player.position.Y -= platform.position.Y;
+
+                }*/
+
+                 if (collision == true)
+                {
+                    // Collision occurred
+                    // Perform actions accordingly
+                    player.position.Y -= platforms[i].position.Y;
+
+                }
+
+
+            }
             Raylib.EndDrawing();
 
-            for (int i = 0; i < platforms.Count; i++) {
-					
-					if ((CalculateDistance(player.position, platforms[i].position) <10))
-					{
-                        
-						
-						
-						
-							
-					}
-            }
+           
         }
 
         public void HandleInput(float deltaTime)
