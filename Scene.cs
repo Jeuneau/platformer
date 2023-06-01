@@ -28,6 +28,8 @@ namespace platformer
         public Platform platform7;
         public Platform platform8;
         public Platform platform9;
+        
+       
 
         public static bool collision { get; internal set; }
 
@@ -66,7 +68,7 @@ namespace platformer
         platform9.position= new Vector2(900,400);
 
         foot = new Foot();
-
+        
        
 
 
@@ -88,18 +90,62 @@ namespace platformer
 
             player.Draw();
 
-            foot.Draw();
+            //foot.Draw();
 
             for (int i = 0; i < platforms.Count; i++) {
 			 platforms[i].Draw();
 			}
+
+            
+            //Jump logic
+            player.velocity.Y += player.gravity * deltaTime;
+
+            if(player.canJump) {
+                player.position += player.velocity * deltaTime;
+
+               for (int i = 0; i < platforms.Count; i++)  {
+                    Rectangle player_rec = new Rectangle(player.position.X, player.position.Y, player.playerwidth, player.playerheight);
+                    Rectangle platform_rec = new Rectangle(platforms[i].position.X, platforms[i].position.Y, platforms[i].platform_width, platforms[i].platform_width);
+                   
+                    if(Raylib.CheckCollisionRecs(player_rec, platform_rec)) {
+                        player.position.Y = platforms[i].position.Y - player.playerheight;
+                        player.velocity.Y = 0;
+                        player.canJump = false;
+                        break;
+                    }     
+                }
+            }
+            //falling
+            else {
+                player.position += player.velocity * deltaTime;
+                for (int i = 0; i < platforms.Count; i++) {
+                    Rectangle player_rec = new Rectangle(player.position.X, player.position.Y, player.playerwidth, player.playerheight);
+                    Rectangle platform_rec = new Rectangle(platforms[i].position.X, platforms[i].position.Y, platforms[i].platform_width, platforms[i].platform_width);
+                    if(Raylib.CheckCollisionRecs(player_rec, platform_rec)) {
+                        player.velocity.Y = 0;
+                        player.position.Y = platforms[i].position.Y - player.playerheight;
+                        break;    
+                    }
+                }
+            }
+
+            /*for (int i = 0; i < platforms.Count; i++) {
+                if(player.position.Y >= platforms[i].position.Y) {
+                    player.position.Y = platforms[i].position.Y;
+                    player.velocity.Y = 0;
+                    player.canJump = false;
+                }
+            }*/
+                
+
+           
 
 
 
             // Check collision between the two objects
 
 
-            for (int i = 0; i < platforms.Count; i++)
+            /*for (int i = 0; i < platforms.Count; i++)
             {
                 Raylib_cs.Rectangle platform_Rect = new Raylib_cs.Rectangle(platforms[i].position.X, platforms[i].position.Y, platforms[i].platform_width, platforms[i].platform_height);
                 Raylib_cs.Rectangle foot_Rect = new Raylib_cs.Rectangle(foot.position.X, foot.position.Y, foot.foot_width, foot.foot_height);
@@ -109,13 +155,13 @@ namespace platformer
                 bool collision = Raylib.CheckCollisionRecs(foot_Rect, platform_Rect);
 
                 
-                /*if (CalculateDistance(foot.position, platforms[i].position)< 1)
-                {
+                //if (CalculateDistance(foot.position, platforms[i].position)< 1)
+                //{
                     // Collision occurred
                     // Perform actions accordingly
-                    player.position.Y -= platform.position.Y;
+                    //  player.position.Y -= platform.position.Y;
 
-                }*/
+                //}
 
                  if (collision == true)
                 {
@@ -126,7 +172,7 @@ namespace platformer
                 }
 
 
-            }
+            }*/
             Raylib.EndDrawing();
 
            

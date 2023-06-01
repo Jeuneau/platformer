@@ -11,19 +11,21 @@ namespace platformer
         float jumpSpeed;
         float horSpeed= 200.0f;
         public Vector2 position;
+        public Vector2 velocity;
+        public float gravity = 50f;
         public float speed;
         public bool canJump;
         Texture2D texture;
-        float deltaTime;
+        public float deltaTime;
 
         bool jump;
         int jumptimer;
         bool collision;
         
-        int playerwidth= 56;
-        int playerheight= 64;
+        public int playerwidth= 56;
+        public int playerheight= 64;
         
-        
+        Platform platform= new Platform();
 
         public Player()
         {
@@ -39,8 +41,13 @@ namespace platformer
         }
          
         public void Update() {
-
          deltaTime= Raylib.GetFrameTime();
+        
+        
+
+
+
+
 
            
         }
@@ -60,25 +67,25 @@ namespace platformer
 
         public void Jump(float deltaTime) {
            
-            speed -= jumpSpeed;
-            position.Y = speed * deltaTime;
+            //speed -= jumpSpeed;
+            //position.Y = speed * deltaTime;
            
 
-            if(canJump == true) {
+            if(!canJump) {
 
-                jumpSpeed= 2.0f; 
-                jumptimer += 1;
+                //jumpSpeed= 2.0f; 
+                velocity.Y = -150.0f;
+                canJump = true;
+                //jumptimer += 1;
             }
 
-            if(canJump == false) {
-                
-            }
+           
 
-            if(Scene.collision == true) {
+            /*if(Scene.collision == true) {
                 canJump = false;
                 jumptimer = 0;
             }
-            if(Raylib.IsKeyPressed(KeyboardKey.KEY_SPACE) && Scene.collision ==true) {
+            if(Raylib.IsKeyPressed(KeyboardKey.KEY_SPACE) && Scene.collision == true) {
                 jumptimer = 0;
                 canJump = true;
             }
@@ -89,7 +96,7 @@ namespace platformer
             else if(Scene.collision == false) {
                 position.Y += speed;
                 canJump = false;
-            }
+            }*/
            
         }
 
