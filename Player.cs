@@ -41,15 +41,7 @@ namespace platformer
         }
          
         public void Update() {
-         deltaTime= Raylib.GetFrameTime();
-        
-        
-
-
-
-
-
-           
+         deltaTime= Raylib.GetFrameTime();   
         }
 
         public void Draw()

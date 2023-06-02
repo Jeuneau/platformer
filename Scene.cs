@@ -15,6 +15,13 @@ namespace platformer
 
         Player player = new Player();
         Foot foot = new Foot();
+        
+        
+        List<Enemy> enemies;
+        public Enemy enemy;
+        public Enemy enemy2;
+        public Enemy enemy3;
+
 
         List<Platform> platforms;
         public Platform platform;
@@ -68,6 +75,22 @@ namespace platformer
         platform9.position= new Vector2(900,400);
 
         foot = new Foot();
+
+        enemies= new List<Enemy>();
+		enemy= new Enemy();
+		enemy2= new Enemy();
+		enemy3= new Enemy();
+
+        enemies.Add(enemy);
+		enemies.Add(enemy2);
+		enemies.Add(enemy3);
+
+        enemy.position = new Vector2(1065,735);
+		enemy2.position= new Vector2(1367,96);
+		enemy3.position= new Vector2(567,54);
+
+
+
         
        
 
@@ -136,6 +159,10 @@ namespace platformer
                     player.canJump = false;
                 }
             }*/
+
+             for (int i = 0; i < enemies.Count; i++) {
+			 enemies[i].Draw();
+			}
                 
 
            
