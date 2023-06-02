@@ -148,11 +148,13 @@ namespace platformer
                    
                   
 
-           //draw enemies
+           //draw enemies + movement
 
              for (int i = 0; i < enemies.Count; i++) {
-			 enemies[i].Draw();
+			    enemies[i].Draw();
+                enemies[i].Update();
 			}
+
                 
 
            
