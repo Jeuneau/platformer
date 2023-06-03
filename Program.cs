@@ -7,7 +7,7 @@ namespace platformer
     {
         public static void Main()
         {
-            Raylib.InitWindow(1707, 1067, "Platformer");
+            Raylib.InitWindow(1920, 1080, "Platformer");
 
             Scene scene = new Scene();
 
