@@ -130,8 +130,8 @@ namespace platformer
                     if(Raylib.CheckCollisionRecs(player_rec, platform_rec)) {
                         if(player.velocity.Y > 0) {
                             player.velocity.Y = 0;
-                            player.position.Y = platforms[i].position.Y - player.playerheight;
-                            player.canJump = false;
+                            player.position.Y = platforms[i].position.Y - player.playerheight; //player snapped to platform
+                            player.isJumping = false;
                         }
                         else if (player.velocity.Y < 0) {
                             player.velocity.Y = 0;  
@@ -140,8 +140,8 @@ namespace platformer
                     }
             }
 
-            if(!player.canJump && player.velocity.Y == 0) {
-                player.canJump = false;
+            if(!player.isJumping && player.velocity.Y == 0) {
+                player.isJumping = false;
             }
                
           

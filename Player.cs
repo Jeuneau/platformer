@@ -14,7 +14,7 @@ namespace platformer
         public Vector2 velocity;
         public float gravity = 50f;
         public float speed;
-        public bool canJump;
+        public bool isJumping;
         Texture2D texture;
         public float deltaTime;
 
@@ -63,11 +63,11 @@ namespace platformer
             //position.Y = speed * deltaTime;
            
 
-            if(!canJump) {
+            if(!isJumping) {
 
                 //jumpSpeed= 2.0f; 
                 velocity.Y = -150.0f;
-                canJump = true;
+                isJumping = true;
                 //jumptimer += 1;
             }
 
