@@ -10,6 +10,7 @@ namespace platformer {
         public float movementrange;
         public bool movingright;
         public float deltaTime = Raylib.GetFrameTime();
+        Platform platform = new Platform();
 
         public Enemy() {
             position = new Vector2(175,340);
@@ -17,8 +18,9 @@ namespace platformer {
             texture = Raylib.LoadTextureFromImage(snowman);       // Image converted to texture, GPU memory (RAM -> VRAM)
             Raylib.UnloadImage(snowman);
             speed = 1.0f;
-            movementrange = 2;
+            movementrange = 5;
             movingright = true; 
+            
         }
 
         public void Draw()
@@ -28,16 +30,16 @@ namespace platformer {
 
         public void Update() {
             /*if(movingright) {
-                position.X = speed * deltaTime;
-                if(position.X >= movementrange) {
-                    position.X = movementrange;
+                position.X += speed * deltaTime;
+                if(position.X >= movementrange + platform.platform_width) {
+                    position.X = movementrange + platform.platform_width;
                     movingright = false;
                 }                
             }
             else {
                 position.X -= speed * deltaTime;
-                if(position.X <= 0) {
-                    position.X = 0;
+                if(position.X <= movementrange) {
+                    position.X = movementrange;
                     movingright = true;
                 }
             }*/

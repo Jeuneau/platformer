@@ -17,6 +17,7 @@ namespace platformer
         Foot foot = new Foot();
         
         
+        
         List<Enemy> enemies;
         public Enemy enemy;
         public Enemy enemy2;
@@ -76,20 +77,19 @@ namespace platformer
 
         foot = new Foot();
 
+       
         enemies= new List<Enemy>();
-		enemy= new Enemy();
-		enemy2= new Enemy();
-		enemy3= new Enemy();
+        enemy = new Enemy();
+        enemy2 = new Enemy();
+        enemy3 = new Enemy();
 
         enemies.Add(enemy);
-		enemies.Add(enemy2);
-		enemies.Add(enemy3);
+        enemies.Add(enemy2);
+        enemies.Add(enemy3);
 
         enemy.position = new Vector2(1065,735);
-		enemy2.position= new Vector2(1367,96);
-		enemy3.position= new Vector2(567,54);
-
-
+        enemy2.position= new Vector2(1367,96);
+        enemy3.position= new Vector2(567,54);
 
         
        
