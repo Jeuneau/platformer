@@ -10,16 +10,17 @@ namespace platformer {
         public float movementrange;
         public bool movingright;
         public float deltaTime = Raylib.GetFrameTime();
-        Platform platform = new Platform();
-
-        public Enemy() {
-            position = new Vector2(175,340);
+        Platform platform;
+      
+        public Enemy(Platform p) {
+            position = p.position;
             Image snowman = Raylib.LoadImage("Assets/snowman_enemy.png");  // Load image data into CPU memory (RAM)
             texture = Raylib.LoadTextureFromImage(snowman);       // Image converted to texture, GPU memory (RAM -> VRAM)
             Raylib.UnloadImage(snowman);
             speed = 1.0f;
             movementrange = 5;
             movingright = true; 
+            platform  = p;
             
         }
 

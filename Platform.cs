@@ -8,14 +8,14 @@ using System.Numerics;
 namespace platformer
 {
 
-    class Platform {
+    public class Platform {
         
         public Vector2 position;
         public float speed;
         Texture2D texture;
         
-        public int platform_width = 78;
-        public int platform_height = 200;
+        public int platform_width = 200;
+        public int platform_height = 78;
          public Platform()
         {
             //position = new Vector2(100,400);

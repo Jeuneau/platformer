@@ -12,20 +12,15 @@ namespace platformer
         float horSpeed= 200.0f;
         public Vector2 position;
         public Vector2 velocity;
-        public float gravity = 50f;
+        public float gravity = 180f;
         public float speed;
         public bool isJumping;
         Texture2D texture;
         public float deltaTime;
-
-        bool jump;
-        int jumptimer;
-        bool collision;
-        
         public int playerwidth= 56;
         public int playerheight= 64;
         
-        Platform platform= new Platform();
+       
 
         public Player()
         {
@@ -66,7 +61,7 @@ namespace platformer
             if(!isJumping) {
 
                 //jumpSpeed= 2.0f; 
-                velocity.Y = -150.0f;
+                velocity.Y = -400.0f;
                 isJumping = true;
                 //jumptimer += 1;
             }

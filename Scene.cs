@@ -19,9 +19,7 @@ namespace platformer
         
         
         List<Enemy> enemies;
-        public Enemy enemy;
-        public Enemy enemy2;
-        public Enemy enemy3;
+        
 
 
         List<Platform> platforms;
@@ -79,18 +77,12 @@ namespace platformer
 
        
         enemies= new List<Enemy>();
-        enemy = new Enemy();
-        enemy2 = new Enemy();
-        enemy3 = new Enemy();
+        
+        enemies.Add(new Enemy(platform5));
+        enemies.Add(new Enemy(platform7));
+        enemies.Add(new Enemy(platform4));
 
-        enemies.Add(enemy);
-        enemies.Add(enemy2);
-        enemies.Add(enemy3);
-
-        enemy.position = new Vector2(1065,735);
-        enemy2.position= new Vector2(1367,96);
-        enemy3.position= new Vector2(567,54);
-
+       
         
        
 
@@ -126,17 +118,14 @@ namespace platformer
 
             for (int i = 0; i < platforms.Count; i++) {
                 Rectangle player_rec = new Rectangle(player.position.X, player.position.Y, player.playerwidth, player.playerheight);
-                Rectangle platform_rec = new Rectangle(platforms[i].position.X, platforms[i].position.Y, platforms[i].platform_width, platforms[i].platform_width);
+                Rectangle platform_rec = new Rectangle(platforms[i].position.X, platforms[i].position.Y, platforms[i].platform_width, platforms[i].platform_height);
                     if(Raylib.CheckCollisionRecs(player_rec, platform_rec)) {
                         if(player.velocity.Y > 0) {
                             player.velocity.Y = 0;
                             player.position.Y = platforms[i].position.Y - player.playerheight; //player snapped to platform
                             player.isJumping = false;
                         }
-                        else if (player.velocity.Y < 0) {
-                            player.velocity.Y = 0;  
-                            //player.position.Y = platforms[i].position.Y + platforms[i].platform_height;  
-                        }
+                       
                     }
             }
 
