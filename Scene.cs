@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace platformer
 {
-    class Scene {
+    public class Scene {
        
         
         float deltaTime;
@@ -18,11 +18,11 @@ namespace platformer
         
         
         
-        List<Enemy> enemies;
+        public List<Enemy> enemies;
         
 
 
-        List<Platform> platforms;
+        public List<Platform> platforms;
         public Platform platform;
         public Platform platform2;
         public Platform platform3;
@@ -42,16 +42,16 @@ namespace platformer
         public Scene() {
         
         Platform platform= new Platform();
-        platforms= new List<Platform>();
-		platform= new Platform();
-		platform2= new Platform();
-		platform3= new Platform();
-		platform4= new Platform();
-		platform5= new Platform();
-		platform6= new Platform();
-		platform7= new Platform();
-		platform8= new Platform();
-        platform9= new Platform();
+        platforms = new List<Platform>();
+		platform = new Platform();
+		platform2 = new Platform();
+		platform3 = new Platform();
+		platform4 = new Platform();
+		platform5 = new Platform();
+		platform6 = new Platform();
+		platform7 = new Platform();
+		platform8 = new Platform();
+        platform9 = new Platform();
 
         platforms.Add(platform);
 		platforms.Add(platform2);
@@ -78,7 +78,7 @@ namespace platformer
        
         enemies= new List<Enemy>();
         
-        enemies.Add(new Enemy(platform5));
+        enemies.Add(new Enemy(platform6));
         enemies.Add(new Enemy(platform7));
         enemies.Add(new Enemy(platform4));
 
@@ -137,24 +137,23 @@ namespace platformer
                    
                   
 
-           //draw enemies + movement
-
-             for (int i = 0; i < enemies.Count; i++) {
+           //movement + draw enemies 
+            Move(deltaTime);
+            for(int i = 0; i < enemies.Count; i++) {
 			    enemies[i].Draw();
-                enemies[i].Update();
-			}
-
+                for(int j = 0; j < platforms.Count; j++) {
+                    
+                    
+                }
                 
-
-           
-
-
-
+            }
+			
             
             Raylib.EndDrawing();
 
            
         }
+
 
         public void HandleInput(float deltaTime)
         {
@@ -178,10 +177,37 @@ namespace platformer
         {
             return Vector2.Distance(a, b);
         }
+
+         public void Move(float deltaTime) {
+            
+            foreach(Enemy enemy in enemies) {
+                if (enemy.movingright)
+                {
+                    enemy.position.X += enemy.speed * deltaTime;
+                        foreach(Platform platform in platforms)    
+                            if (enemy.position.X >= enemy.movementrange + platform.platform_width - enemy.enemywidth)
+                            {
+                                enemy.position.X = enemy.movementrange + platform.platform_width - enemy.enemywidth;
+                                enemy.movingright = false; // Change direction when reaching the range limit
+                            }
+                }   
+                else
+                {
+                    enemy.position.X -= enemy.speed * deltaTime;
+                    if (enemy.position.X <= enemy.movementrange)
+                    {
+                        enemy.position.X = enemy.movementrange;
+                        enemy.movingright = true; // Change direction when reaching the range limit
+                    }
+                }
+            }
+                
+        }
                    
     }
-     
 }
+     
+
 
 
 

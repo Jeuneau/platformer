@@ -7,9 +7,7 @@ namespace platformer
    
     public class Player {
 
-        
-        float jumpSpeed;
-        float horSpeed= 200.0f;
+        float horSpeed= 300.0f;
         public Vector2 position;
         public Vector2 velocity;
         public float gravity = 180f;
@@ -34,10 +32,6 @@ namespace platformer
              
             
         }
-         
-        public void Update() {
-         deltaTime= Raylib.GetFrameTime();   
-        }
 
         public void Draw()
         {
@@ -54,40 +48,13 @@ namespace platformer
 
         public void Jump(float deltaTime) {
            
-            //speed -= jumpSpeed;
-            //position.Y = speed * deltaTime;
-           
-
             if(!isJumping) {
-
-                //jumpSpeed= 2.0f; 
                 velocity.Y = -400.0f;
                 isJumping = true;
-                //jumptimer += 1;
             }
 
-           
-
-            /*if(Scene.collision == true) {
-                canJump = false;
-                jumptimer = 0;
-            }
-            if(Raylib.IsKeyPressed(KeyboardKey.KEY_SPACE) && Scene.collision == true) {
-                jumptimer = 0;
-                canJump = true;
-            }
-            if(jumptimer < 80) {
-                position.Y -= speed;
-            }
-
-            else if(Scene.collision == false) {
-                position.Y += speed;
-                canJump = false;
-            }*/
-           
+            
         }
-
-      
     }
 
 }
