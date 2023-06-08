@@ -17,6 +17,7 @@ namespace platformer
         public float deltaTime;
         public int playerwidth= 56;
         public int playerheight= 64;
+        public int health = 100;
         
        
 
@@ -52,9 +53,23 @@ namespace platformer
                 velocity.Y = -400.0f;
                 isJumping = true;
             }
-
-            
         }
-    }
+
+        public void Damage(int amount) {
+            health -= amount;
+        }
+
+        public bool IsAlive() {
+			if (health <= 0) {
+				
+				return false;
+				
+				
+			}
+			return true;
+			
+		}
+
+     }
 
 }

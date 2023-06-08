@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace platformer
 {
-    public class Scene {
+    public class Scene: Node {
        
         
         float deltaTime;
@@ -34,6 +34,8 @@ namespace platformer
         public Platform platform7;
         public Platform platform8;
         public Platform platform9;
+        private Healthbar healthbar;
+        
         
        
 
@@ -82,6 +84,7 @@ namespace platformer
         enemies.Add(new Enemy(platform7));
         enemies.Add(new Enemy(platform4));
 
+        healthbar = new Healthbar();
        
         
        
@@ -104,6 +107,7 @@ namespace platformer
             Raylib.ClearBackground(Color.GRAY);
 
             player.Draw();
+            healthbar.Draw();
 
             //foot.Draw();
 
@@ -142,13 +146,23 @@ namespace platformer
             for(int i = 0; i < enemies.Count; i++) {
 			    enemies[i].Draw();
                 enemies[i].Move(deltaTime);
+                Rectangle enemy_rec = new Rectangle(enemies[i].position.X, enemies[i].position.Y, enemies[i].enemywidth, enemies[i].enemyheight);
+                Rectangle player_rec = new Rectangle(player.position.X, player.position.Y, player.playerwidth, player.playerheight);    
+                    if(Raylib.CheckCollisionRecs(enemy_rec, player_rec)) {
+                        player.Damage(3);
+                    }
+
             }
+            //healthbar.Scale.X= player.health /10;
+
+            
 			
             
             Raylib.EndDrawing();
 
            
-        }
+        
+    }
 
 
         public void HandleInput(float deltaTime)
@@ -181,8 +195,10 @@ namespace platformer
         
                    
     }
-}
+}    
+    
      
+
 
 
 
