@@ -14,7 +14,7 @@ namespace platformer
         float deltaTime;
 
         Player player = new Player();
-        Foot foot = new Foot();
+        
         
         
         
@@ -74,8 +74,6 @@ namespace platformer
 		platform7.position= new Vector2(1000,800);
 		platform8.position= new Vector2(450,900);
         platform9.position= new Vector2(900,400);
-
-        foot = new Foot();
 
        
         enemies= new List<Enemy>();
