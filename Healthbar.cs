@@ -17,7 +17,7 @@ Texture2D texture;
      public Healthbar()
     {
        
-        position= new Vector2(1000,1000);
+        position= new Vector2(1700,30);
         pivot= new Vector2(0,0);
         Image health = Raylib.LoadImage("Assets/player_health.png");  // Load image data into CPU memory (RAM)
         texture = Raylib.LoadTextureFromImage(health);       // Image converted to texture, GPU memory (RAM -> VRAM)

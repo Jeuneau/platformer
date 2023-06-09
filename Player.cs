@@ -44,7 +44,7 @@ namespace platformer
         }
 
         public  void MoveRight(float deltaTime) {
-            position.X += horSpeed*deltaTime;
+            position.X += horSpeed * deltaTime;
         }
 
         public void Jump(float deltaTime) {
