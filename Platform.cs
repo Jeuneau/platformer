@@ -8,7 +8,7 @@ using System.Numerics;
 namespace platformer
 {
 
-    public class Platform {
+    public class Platform: Node {
         
         public Vector2 position;
         public float speed;

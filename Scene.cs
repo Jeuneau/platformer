@@ -106,8 +106,7 @@ namespace platformer
 
             player.Draw();
             healthbar.Draw();
-
-            //foot.Draw();
+            healthbar.ScaleHP();
 
             for (int i = 0; i < platforms.Count; i++) {
 			 platforms[i].Draw();
@@ -146,13 +145,12 @@ namespace platformer
                 enemies[i].Move(deltaTime);
                 Rectangle enemy_rec = new Rectangle(enemies[i].position.X, enemies[i].position.Y, enemies[i].enemywidth, enemies[i].enemyheight);
                 Rectangle player_rec = new Rectangle(player.position.X, player.position.Y, player.playerwidth, player.playerheight);    
-                    if(Raylib.CheckCollisionRecs(enemy_rec, player_rec)) {
-                        player.Damage(3);
-                    }
+                if(Raylib.CheckCollisionRecs(enemy_rec, player_rec)) {
+                    player.Damage(10);
+                }
 
             }
-            //healthbar.Scale.X= player.health /10;
-
+            
             
 			
             
@@ -181,7 +179,7 @@ namespace platformer
 			}
         }
 
-        	private float CalculateDistance(Vector2 a, Vector2 b)
+        private float CalculateDistance(Vector2 a, Vector2 b)
         {
             return Vector2.Distance(a, b);
         }

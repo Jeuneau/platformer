@@ -5,7 +5,7 @@ using System.Numerics;
 namespace platformer
 {
    
-    public class Player {
+    public class Player: Node {
 
         float horSpeed= 300.0f;
         public Vector2 position;

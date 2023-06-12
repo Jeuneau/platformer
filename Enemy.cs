@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Numerics; 
 
 namespace platformer {
-    public class Enemy {
+    public class Enemy: Node {
         Texture2D texture;
         public Vector2 position;
         public float speed; 
