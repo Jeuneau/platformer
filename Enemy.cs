@@ -50,27 +50,6 @@ namespace platformer {
                     movingright= true;
                 }
             }
-                
-            
-            /*if (movingright)
-                {
-                    position.X += speed * deltaTime;   
-                            if (position.X >= movementrange + 200 - enemywidth)
-                            {
-                                position.X = movementrange + 200 - enemywidth;
-                                movingright = false; // Change direction when reaching the range limit
-                            }
-                }   
-                else
-                {
-                   position.X -= speed * deltaTime;
-                    if (position.X <= movementrange)
-                    {
-                       position.X = movementrange;
-                        movingright = true; // Change direction when reaching the range limit
-                    }
-                }
-                */
         }
        
     }

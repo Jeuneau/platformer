@@ -146,7 +146,8 @@ namespace platformer
                 Rectangle enemy_rec = new Rectangle(enemies[i].position.X, enemies[i].position.Y, enemies[i].enemywidth, enemies[i].enemyheight);
                 Rectangle player_rec = new Rectangle(player.position.X, player.position.Y, player.playerwidth, player.playerheight);    
                 if(Raylib.CheckCollisionRecs(enemy_rec, player_rec)) {
-                    player.Damage(10);
+                    //player.Damage(10);
+                    healthbar.health -= 0.1f;
                 }
 
             }
