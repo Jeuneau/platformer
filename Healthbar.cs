@@ -6,14 +6,14 @@ using System.Numerics;
 namespace platformer;
 
 public class Healthbar: Node {
-    public float health = 100;
+    public float hp = 100;
     Vector2 pivot;
     Texture2D texture;
 
     public Healthbar()
     {
        
-        Position= new Vector2(1700,30);
+        //Position= new Vector2(1700,30);
         pivot = new Vector2(0, 0.5f);
         Image health = Raylib.LoadImage("Assets/platformer_healthbar.png");  // Load image data into CPU memory (RAM)
         
@@ -23,8 +23,6 @@ public class Healthbar: Node {
 
     public void Draw()
     {
-        Raylib.DrawTexture(texture, (int)Position.X, (int)Position.Y, Color.WHITE);
-
         float width = texture.width;
         float height = texture.height;
 
@@ -34,11 +32,11 @@ public class Healthbar: Node {
         //Vector2 pivot = new Vector2(width * pivot.X * WorldScale.X, height * pivot.Y * WorldScale.Y);
         float rot = WorldRotation * 180 / (float) Math.PI;
         Raylib.DrawTexturePro(texture, sourceRect, destRect, pivot, rot, Color.WHITE);
-        Console.WriteLine(health);
+        Console.WriteLine(hp);
     }
 
     public void ScaleHP() {
-        Scale.X = health / 10;
+        Scale.X = hp / 10;
     }
 
 

@@ -17,8 +17,7 @@ namespace platformer
         public float deltaTime;
         public int playerwidth= 56;
         public int playerheight= 64;
-        public int health = 100;
-        
+        Healthbar healthbar = new Healthbar();
        
 
         public Player()
@@ -56,15 +55,12 @@ namespace platformer
         }
 
         public void Damage(int amount) {
-            health -= amount;
+            healthbar.hp -= amount;
         }
 
         public bool IsAlive() {
-			if (health <= 0) {
-				
+			if (healthbar.hp <= 0) {
 				return false;
-				
-				
 			}
 			return true;
 			

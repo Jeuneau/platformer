@@ -14,14 +14,7 @@ namespace platformer
         float deltaTime;
 
         Player player = new Player();
-        
-        
-        
-        
         public List<Enemy> enemies;
-        
-
-
         public List<Platform> platforms;
         public Platform platform;
         public Platform platform2;
@@ -29,15 +22,13 @@ namespace platformer
 
 		public Platform platform4;
 		public Platform platform5;
-
 		public Platform platform6;
         public Platform platform7;
         public Platform platform8;
         public Platform platform9;
         private Healthbar healthbar;
-        
-        
-       
+        Gameover gameover = new Gameover();
+
 
         public static bool collision { get; internal set; }
 
@@ -83,6 +74,7 @@ namespace platformer
         enemies.Add(new Enemy(platform4));
 
         healthbar = new Healthbar();
+         
        
         
        
@@ -146,20 +138,22 @@ namespace platformer
                 Rectangle enemy_rec = new Rectangle(enemies[i].position.X, enemies[i].position.Y, enemies[i].enemywidth, enemies[i].enemyheight);
                 Rectangle player_rec = new Rectangle(player.position.X, player.position.Y, player.playerwidth, player.playerheight);    
                 if(Raylib.CheckCollisionRecs(enemy_rec, player_rec)) {
-                    //player.Damage(10);
-                    healthbar.health -= 0.1f;
+                    healthbar.hp -= 0.1f;
                 }
 
             }
             
-            
+            if(!player.IsAlive()) {
+                gameover.Draw();
+                return;
+            }
 			
             
             Raylib.EndDrawing();
 
            
         
-    }
+        }   
 
 
         public void HandleInput(float deltaTime)
@@ -183,14 +177,7 @@ namespace platformer
         private float CalculateDistance(Vector2 a, Vector2 b)
         {
             return Vector2.Distance(a, b);
-        }
-
-         
-            
-            
-                
-        
-                   
+        }             
     }
 }    
     
