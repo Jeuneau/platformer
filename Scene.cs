@@ -30,7 +30,7 @@ namespace platformer
         Gameover gameover = new Gameover();
 
 
-        public static bool collision { get; internal set; }
+        
 
         public Scene() {
         
@@ -99,6 +99,7 @@ namespace platformer
             player.Draw();
             healthbar.Draw();
             healthbar.ScaleHP();
+            
 
             for (int i = 0; i < platforms.Count; i++) {
 			 platforms[i].Draw();
@@ -138,20 +139,21 @@ namespace platformer
                 Rectangle enemy_rec = new Rectangle(enemies[i].position.X, enemies[i].position.Y, enemies[i].enemywidth, enemies[i].enemyheight);
                 Rectangle player_rec = new Rectangle(player.position.X, player.position.Y, player.playerwidth, player.playerheight);    
                 if(Raylib.CheckCollisionRecs(enemy_rec, player_rec)) {
-                    healthbar.hp -= 0.1f;
+                    player.hp -= 0.1f;
                 }
 
             }
             
             if(!player.IsAlive()) {
                 gameover.Draw();
-                return;
+                
             }
+
+           
 			
             
             Raylib.EndDrawing();
 
-           
         
         }   
 
@@ -168,7 +170,7 @@ namespace platformer
                 player.MoveRight(deltaTime);
 			}
 
-            if (Raylib.IsKeyPressed(KeyboardKey.KEY_SPACE))
+            if (Raylib.IsKeyPressed(KeyboardKey.KEY_UP))
 			{
                 player.Jump(deltaTime);
 			}

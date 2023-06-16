@@ -6,9 +6,11 @@ using System.Numerics;
 namespace platformer;
 
 public class Healthbar: Node {
-    public float hp = 100;
+    
     Vector2 pivot;
     Texture2D texture;
+    Player player = new Player();
+    
 
     public Healthbar()
     {
@@ -22,7 +24,8 @@ public class Healthbar: Node {
     }
 
     public void Draw()
-    {
+    {   
+        Raylib.DrawTexture(texture, (int)Position.X, (int)Position.Y, Color.WHITE);
         float width = texture.width;
         float height = texture.height;
 
@@ -32,14 +35,16 @@ public class Healthbar: Node {
         //Vector2 pivot = new Vector2(width * pivot.X * WorldScale.X, height * pivot.Y * WorldScale.Y);
         float rot = WorldRotation * 180 / (float) Math.PI;
         Raylib.DrawTexturePro(texture, sourceRect, destRect, pivot, rot, Color.WHITE);
-        Console.WriteLine(hp);
+        Console.WriteLine(player.hp);
     }
 
     public void ScaleHP() {
-        Scale.X = hp / 10;
+       
+        Scale.X = player.hp / 10;
+        
     }
 
 
     
 
-}
+} 
