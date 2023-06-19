@@ -131,15 +131,14 @@ namespace platformer
                    
                   
 
-           //movement + draw enemies 
-            //Move(deltaTime);
+            //movement + draw enemies 
             for(int i = 0; i < enemies.Count; i++) {
 			    enemies[i].Draw();
                 enemies[i].Move(deltaTime);
                 Rectangle enemy_rec = new Rectangle(enemies[i].position.X, enemies[i].position.Y, enemies[i].enemywidth, enemies[i].enemyheight);
                 Rectangle player_rec = new Rectangle(player.position.X, player.position.Y, player.playerwidth, player.playerheight);    
                 if(Raylib.CheckCollisionRecs(enemy_rec, player_rec)) {
-                    player.hp -= 0.1f;
+                    player.Damage();
                 }
 
             }
@@ -174,12 +173,7 @@ namespace platformer
 			{
                 player.Jump(deltaTime);
 			}
-        }
-
-        private float CalculateDistance(Vector2 a, Vector2 b)
-        {
-            return Vector2.Distance(a, b);
-        }             
+        }       
     }
 }    
     

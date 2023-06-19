@@ -18,7 +18,7 @@ namespace platformer
         public int playerwidth= 56;
         public int playerheight= 64;
         
-        public float hp = 100;
+        public float hp = 100.0f;
         
        
 
