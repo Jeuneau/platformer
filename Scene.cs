@@ -72,8 +72,9 @@ namespace platformer
         enemies.Add(new Enemy(platform6));
         enemies.Add(new Enemy(platform7));
         enemies.Add(new Enemy(platform4));
-
-        healthbar = new Healthbar();
+        
+        healthbar = new Healthbar(player);
+        AddChild(healthbar);
          
        
         
@@ -97,7 +98,8 @@ namespace platformer
             Raylib.ClearBackground(Color.GRAY);
 
             player.Draw();
-            healthbar.Draw();
+            
+            healthbar.DrawHP();
             healthbar.ScaleHP();
             
 
@@ -139,6 +141,7 @@ namespace platformer
                 Rectangle player_rec = new Rectangle(player.position.X, player.position.Y, player.playerwidth, player.playerheight);    
                 if(Raylib.CheckCollisionRecs(enemy_rec, player_rec)) {
                     player.Damage();
+                  
                 }
 
             }

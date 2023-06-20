@@ -20,7 +20,7 @@ namespace platformer {
             Image snowman = Raylib.LoadImage("Assets/snowman_enemy.png");  // Load image data into CPU memory (RAM)
             texture = Raylib.LoadTextureFromImage(snowman);       // Image converted to texture, GPU memory (RAM -> VRAM)
             Raylib.UnloadImage(snowman);
-            speed = 30.0f;
+            speed = 60.0f;
             movingright = true; 
             platform = p;
             position.Y = platform.position.Y - platform.platform_height + 12; //magic number!!!!

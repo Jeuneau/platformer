@@ -5,44 +5,59 @@ using System.Numerics;
 
 namespace platformer;
 
-public class Healthbar: Node {
+class Healthbar: SpriteNode {
     
-    Vector2 pivot;
+   
     Texture2D texture;
-    Player player = new Player();
+    Player player ;
     
 
-    public Healthbar()
+    public Healthbar(Player player) : base("Assets/platformer_healthbar.png")
     {
        
-        //Position= new Vector2(1700,30);
-        pivot = new Vector2(0, 0.5f);
-        Image health = Raylib.LoadImage("Assets/platformer_healthbar.png");  // Load image data into CPU memory (RAM)
-        
+        this.player =  player;
+        Image health = Raylib.LoadImage(base.TextureName);  // Load image data into CPU memory (RAM)
+        //TextureName = "Assets/platformer_healthbar.png";
         texture = Raylib.LoadTextureFromImage(health);       // Image converted to texture, GPU memory (RAM -> VRAM)
-        Raylib.UnloadImage(health);
+       // Raylib.UnloadImage(health);
+        Position= new Vector2(1700,30);
+        TextureSize = new Vector2(5, 5);
+        Console.WriteLine(base.TextureSize);
+        Pivot = new Vector2(0, 0.5f);
+
+    
     }
 
-    public void Draw()
-    {   
-        Raylib.DrawTexture(texture, (int)Position.X, (int)Position.Y, Color.WHITE);
-        float width = texture.width;
-        float height = texture.height;
-
-        // draw the Texture
-        Rectangle sourceRect = new Rectangle(0.0f, 0.0f, width, height);
-        Rectangle destRect = new Rectangle(WorldPosition.X, WorldPosition.Y, width * Scale.X, height);
-        //Vector2 pivot = new Vector2(width * pivot.X * WorldScale.X, height * pivot.Y * WorldScale.Y);
-        float rot = WorldRotation * 180 / (float) Math.PI;
-        Raylib.DrawTexturePro(texture, sourceRect, destRect, pivot, rot, Color.WHITE);
-        Console.WriteLine(player.hp);
-    }
+   
 
     public void ScaleHP() {
-       
+   
         Scale.X = player.hp / 10;
         
+        
     }
+
+    public void DrawHP()
+		{
+			ResourceManager resman = ResourceManager.Instance;
+			Texture2D texture = resman.GetTexture(TextureName);
+			float width = texture.width;
+			float height = texture.height;
+		
+			// this Entity might not know its Size yet...
+			if (TextureSize.X == 0)
+			{
+				Vector2 size = new Vector2(width, height);
+				TextureSize = size;
+			}
+			// draw the Texture
+			Rectangle sourceRect = new Rectangle(0.0f, 0.0f, width, height);
+			Rectangle destRect = new Rectangle(WorldPosition.X, WorldPosition.Y, width * Scale.X, height );
+			Vector2 pivot = new Vector2(width * Pivot.X * WorldScale.X, height * Pivot.Y * WorldScale.Y);
+			float rot = WorldRotation * 180 / (float) Math.PI;
+			Raylib.DrawTexturePro(texture, sourceRect, destRect, pivot, rot, Color);
+		}
+
 
 
     

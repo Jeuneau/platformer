@@ -49,6 +49,7 @@ namespace platformer
 			Texture2D texture = resman.GetTexture(TextureName);
 			float width = texture.width;
 			float height = texture.height;
+		
 			// this Entity might not know its Size yet...
 			if (TextureSize.X == 0)
 			{
