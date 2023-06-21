@@ -14,7 +14,8 @@ namespace platformer
 		// 	get { return position; }
 		// 	set { position = value; }
 		// }
-		public double Rotation { 
+		public double Rotation 
+		{ 
 			get { return rotation; }
 			set { rotation = value; }
 		}
@@ -25,7 +26,8 @@ namespace platformer
 
 		// Data structure
 		private List<Node> children;
-		public List<Node> Children {
+		public List<Node> Children 
+		{
 			get { return children; }
 		}
 		private Node parent;
@@ -35,13 +37,16 @@ namespace platformer
 		private float worldRotation;
 		private Vector2 worldScale;
 
-		public Vector2 WorldPosition {
+		public Vector2 WorldPosition 
+		{
 			get { return worldPosition; }
 		}
-		public float WorldRotation {
+		public float WorldRotation 
+		{
 			get { return worldRotation; }
 		}
-		public Vector2 WorldScale {
+		public Vector2 WorldScale 
+		{
 			get { return worldScale; }
 		}
 

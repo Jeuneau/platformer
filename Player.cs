@@ -5,7 +5,8 @@ using System.Numerics;
 namespace platformer
 {
    
-    public class Player: Node {
+    public class Player: Node 
+    {
 
         float horSpeed= 300.0f;
         public Vector2 position;
@@ -40,15 +41,18 @@ namespace platformer
             Raylib.DrawTexture(texture, (int)position.X, (int)position.Y, Color.WHITE);
         }
 
-        public void MoveLeft(float deltaTime) {
+        public void MoveLeft(float deltaTime) 
+        {
             position.X -= horSpeed * deltaTime;
         }
 
-        public  void MoveRight(float deltaTime) {
+        public  void MoveRight(float deltaTime) 
+        {
             position.X += horSpeed * deltaTime;
         }
 
-        public void Jump(float deltaTime) {
+        public void Jump(float deltaTime) 
+        {
            
             if(!isJumping) {
                 velocity.Y = -400.0f;
@@ -56,11 +60,13 @@ namespace platformer
             }
         }
 
-        public void Damage() {
+        public void Damage() 
+        {
           hp -= 0.1f;
         }
 
-        public bool IsAlive() {
+        public bool IsAlive() 
+        {
 			if (hp <= 0) {
 				return false;
 			}

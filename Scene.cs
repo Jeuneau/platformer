@@ -2,17 +2,11 @@ using Raylib_cs;
 using System; // Math
 using System.Numerics;
 using System.Collections.Generic; 
-
-
-
-
 namespace platformer
 {
-    public class Scene: Node {
-       
-        
+    public class Scene: Node 
+    {
         float deltaTime;
-
         Player player = new Player();
         public List<Enemy> enemies;
         public List<Platform> platforms;
@@ -32,7 +26,8 @@ namespace platformer
 
         
 
-        public Scene() {
+        public Scene() 
+        {
         
         Platform platform= new Platform();
         platforms = new List<Platform>();
@@ -75,21 +70,10 @@ namespace platformer
         
         healthbar = new Healthbar(player);
         AddChild(healthbar);
-         
-       
-        
-       
-
-
-        
-			
-        
         }
-        public void Update() {
-
-
+        public void Update() 
+        {
             deltaTime= Raylib.GetFrameTime();
-
 
             HandleInput(deltaTime);
 
@@ -134,7 +118,8 @@ namespace platformer
                   
 
             //movement + draw enemies 
-            for(int i = 0; i < enemies.Count; i++) {
+            for(int i = 0; i < enemies.Count; i++) 
+            {
 			    enemies[i].Draw();
                 enemies[i].Move(deltaTime);
                 Rectangle enemy_rec = new Rectangle(enemies[i].position.X, enemies[i].position.Y, enemies[i].enemywidth, enemies[i].enemyheight);
@@ -146,17 +131,11 @@ namespace platformer
 
             }
             
-            if(!player.IsAlive()) {
+            if(!player.IsAlive()) 
+            {
                 gameover.Draw();
-                
             }
-
-           
-			
-            
             Raylib.EndDrawing();
-
-        
         }   
 
 

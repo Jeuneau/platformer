@@ -12,19 +12,23 @@ namespace platformer
 		private Vector2 pivot;
 		private Color color;
 
-		public string TextureName {
+		public string TextureName 
+		{
 			get { return textureName; }
 			set { textureName = value; }
 		}
-		public Vector2 TextureSize {
+		public Vector2 TextureSize 
+		{
 			get { return textureSize; }
 			set { textureSize = value; }
 		}
-		public Vector2 Pivot {
+		public Vector2 Pivot 
+		{
 			get { return pivot; }
 			set { pivot = value; }
 		}
-		public Color Color {
+		public Color Color 
+		{
 			get { return color; }
 			set { color = value; }
 		}
@@ -63,6 +67,5 @@ namespace platformer
 			float rot = WorldRotation * 180 / (float) Math.PI;
 			Raylib.DrawTexturePro(texture, sourceRect, destRect, pivot, rot, Color);
 		}
-
 	}
 }
