@@ -15,7 +15,7 @@ namespace platformer {
 
         public Healthbar(Player player) : base("Assets/platformer_healthbar.png") 
         {   
-            this.player =  player;
+            this.player = player;
             Image health = Raylib.LoadImage(base.TextureName);  // Load image data into CPU memory (RAM)
             //TextureName = "Assets/platformer_healthbar.png";
             texture = Raylib.LoadTextureFromImage(health);       // Image converted to texture, GPU memory (RAM -> VRAM)

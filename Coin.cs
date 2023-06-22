@@ -12,6 +12,7 @@ namespace platformer
         public Platform platform;
         public int coin_width = 40;
         public int coin_height = 40;
+        public int collected_coins = 0;
         public Coin(Platform p) 
         {
             Image coin = Raylib.LoadImage("Assets/coin.png");  // Load image data into CPU memory (RAM)

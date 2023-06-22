@@ -5,8 +5,11 @@ namespace platformer
 {
     public class Program
     {
-        public float window_width = 1280;
-        public float window_height = 720;
+        //windowed
+        //width = 1280
+        //height = 720
+        public float window_width = 1920;
+        public float window_height = 1080;
             public static void Main()
             {
                 Raylib.InitWindow(1920, 1080, "Platformer");

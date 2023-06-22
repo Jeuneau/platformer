@@ -23,6 +23,9 @@ namespace platformer
         public Platform platform9;
         Healthbar healthbar;
         Gameover gameover = new Gameover();
+        Program program = new Program();
+        Youwin youwin = new Youwin();
+        HUD hud = new HUD();
         public Scene()
         {
         
@@ -72,6 +75,8 @@ namespace platformer
             coins.Add(new Coin(platform5));
             coins.Add(new Coin(platform2));
             coins.Add(new Coin(platform8));
+
+            
         
 
         }
@@ -143,9 +148,16 @@ namespace platformer
                 if(Raylib.CheckCollisionRecs(coin_rec, player_rec)) {
                     RemoveChild(coins[i]);
 					coins.RemoveAt(i);
-                  
+                    hud.collected_coins++;
                 }
             }
+
+            hud.ShowScore();
+
+            if(hud.collected_coins == 3) 
+            {
+                youwin.Draw();
+            } 
 
             if(!player.IsAlive()) 
             {

@@ -14,7 +14,7 @@ namespace platformer
     
         public Gameover() {
 
-            Position = new Vector2(program.window_width / 2, program.window_height / 2);
+            Position = new Vector2(program.window_width / 3, program.window_height / 3);
             Image gameover_ = Raylib.LoadImage("Assets/platformer_gameover.png");  // Load image data into CPU memory (RAM)
             texture = Raylib.LoadTextureFromImage(gameover_);       // Image converted to texture, GPU memory (RAM -> VRAM)
             Raylib.UnloadImage(gameover_);
