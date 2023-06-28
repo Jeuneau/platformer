@@ -10,7 +10,7 @@ namespace platformer {
     
    
         Texture2D texture;
-        Player player ;
+        Player player;
     
 
         public Healthbar(Player player) : base("Assets/platformer_healthbar.png") 

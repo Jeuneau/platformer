@@ -14,7 +14,7 @@ namespace platformer
             {
                 Raylib.InitWindow(1920, 1080, "Platformer");
 
-                Scene scene = new Scene();
+               Scene scene = new Scene("platformer");
 
                 while (!Raylib.WindowShouldClose())
                 {
@@ -23,6 +23,8 @@ namespace platformer
 
                 Raylib.CloseWindow();
             }
+
+
        
     }
 }

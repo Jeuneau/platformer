@@ -4,7 +4,7 @@ using System.Numerics;
 using System.Collections.Generic; 
 namespace platformer
 {
-    public class Scene: Node 
+    public class Scene: SceneNode 
     {
         float deltaTime;
         Player player = new Player();
@@ -26,9 +26,13 @@ namespace platformer
         Program program = new Program();
         Youwin youwin = new Youwin();
         HUD hud = new HUD();
-        public Scene()
-        {
+        //Game game = new Game();
         
+       
+        
+
+        public Scene(String t) : base(t)
+        {
             Platform platform= new Platform();
             platforms = new List<Platform>();
             platform = new Platform();
@@ -75,11 +79,14 @@ namespace platformer
             coins.Add(new Coin(platform5));
             coins.Add(new Coin(platform2));
             coins.Add(new Coin(platform8));
-
+            
             
         
 
         }
+
+       
+
         public void Update() 
         {
             deltaTime= Raylib.GetFrameTime();
@@ -163,6 +170,8 @@ namespace platformer
             {
                 gameover.Draw();
             }
+
+            //game.Play();
             Raylib.EndDrawing();
         }   
 
