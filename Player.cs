@@ -62,7 +62,7 @@ namespace platformer
 
         public void Damage() 
         {
-          hp -= 0.1f;
+          hp -= 0.03f;
         }
 
         public bool IsAlive() 
