@@ -13,7 +13,7 @@ namespace platformer
 
         public void ShowScore()
 		{		
-			Raylib.DrawText("Score: "+ collected_coins, 1800, 60, 20, Color.BLUE);
+			Raylib.DrawText("Score: "+ collected_coins, 1600, 60, 70, Color.BLUE);
 			
 		}
     }

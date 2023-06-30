@@ -55,11 +55,11 @@ namespace platformer
             platforms.Add(platform8);
             platforms.Add(platform9);
 
-            platform.position = new Vector2(100,400);
-            platform2.position= new Vector2(50,100);
-            platform3.position= new Vector2(500,120);
-            platform4.position = new Vector2(950,90);
-            platform5.position = new Vector2(1300,160);
+            platform.position = new Vector2(180,400);
+            platform2.position= new Vector2(50,150);
+            platform3.position= new Vector2(500,260);
+            platform4.position = new Vector2(950,150);
+            platform5.position = new Vector2(1300,280);
             platform6.position = new Vector2(550,600);
             platform7.position= new Vector2(1000,800);
             platform8.position= new Vector2(450,900);
@@ -68,17 +68,23 @@ namespace platformer
         
             enemies= new List<Enemy>();
             
+            enemies.Add(new Enemy(platform4));
             enemies.Add(new Enemy(platform6));
             enemies.Add(new Enemy(platform7));
-            enemies.Add(new Enemy(platform4));
+            
             
             healthbar = new Healthbar(player);
             AddChild(healthbar);
             
             coins= new List<Coin>();
-            coins.Add(new Coin(platform5));
+            
             coins.Add(new Coin(platform2));
+            coins.Add(new Coin(platform3));
+            coins.Add(new Coin(platform5));
             coins.Add(new Coin(platform8));
+            coins.Add(new Coin(platform9));
+            
+            
             
             
         
@@ -98,6 +104,7 @@ namespace platformer
             Raylib.ClearBackground(Color.GRAY);
 
             player.Draw();
+            player.WrapEdges();
             
             healthbar.DrawHP();
             healthbar.ScaleHP();
@@ -161,12 +168,12 @@ namespace platformer
 
             hud.ShowScore();
 
-            if(hud.collected_coins == 3) 
+            if(hud.collected_coins == 5 & player.IsAlive()) 
             {
                 youwin.Draw();
             } 
 
-            if(!player.IsAlive()) 
+            if(!player.IsAlive() & hud.collected_coins <= 5) 
             {
                 gameover.Draw();
             }
