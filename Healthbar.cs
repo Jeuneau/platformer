@@ -13,7 +13,7 @@ namespace platformer {
         Player player;
     
 
-        public Healthbar(Player player) : base("Assets/platformer_healthbar.png") 
+        public Healthbar(Player player) : base("Assets/Healthbar2.png") 
         {   
             this.player = player;
             Image health = Raylib.LoadImage(base.TextureName);  // Load image data into CPU memory (RAM)
@@ -51,7 +51,7 @@ namespace platformer {
             Rectangle destRect = new Rectangle(WorldPosition.X, WorldPosition.Y, width * Scale.X, height );
             Vector2 pivot = new Vector2(width * Pivot.X * WorldScale.X, height * Pivot.Y * WorldScale.Y);
             float rot = WorldRotation * 180 / (float) Math.PI;
-            Raylib.DrawTexturePro(texture, sourceRect, destRect, pivot, rot, Color);
+            Raylib.DrawTexturePro(texture, sourceRect, destRect, pivot, rot, Color.GREEN);
         }
     } 
 }
