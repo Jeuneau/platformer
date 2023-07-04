@@ -12,7 +12,8 @@ namespace platformer
         float horSpeed= 400.0f;
         public Vector2 position;
         public Vector2 velocity;
-        public float gravity = 260f;
+        public float gravity = 520f;
+        public float jumpSpeed = -540.0f;
         public float speed;
         public bool isJumping;
         Texture2D texture;
@@ -32,9 +33,6 @@ namespace platformer
             Image stickman = Raylib.LoadImage("Assets/platformer_stickman_player.png");  // Load image data into CPU memory (RAM)
             texture = Raylib.LoadTextureFromImage(stickman);       // Image converted to texture, GPU memory (RAM -> VRAM)
             Raylib.UnloadImage(stickman);
-           
-             
-            
         }
 
         public void Draw()
@@ -56,7 +54,7 @@ namespace platformer
         {
            
             if(!isJumping) {
-                velocity.Y = -270.0f;
+                velocity.Y = jumpSpeed;
                 isJumping = true;
             }
         }
