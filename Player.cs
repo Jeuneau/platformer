@@ -5,15 +5,15 @@ using System.Numerics;
 namespace platformer
 {
    
-    public class Player: Node 
+    class Player: SpriteNode
     {
         public float window_width = 1920;
         public float window_height = 1080;
         float horSpeed= 400.0f;
         public Vector2 position;
         public Vector2 velocity;
-        public float gravity = 520f;
-        public float jumpSpeed = -540.0f;
+        public float gravity = 550f;
+        public float jumpSpeed = -500.0f;
         public float speed;
         public bool isJumping;
         Texture2D texture;
@@ -25,7 +25,7 @@ namespace platformer
         
        
 
-        public Player()
+        public Player() : base("Assets/Healthbar2.png") 
         {
             
             position = new Vector2(175,340);
